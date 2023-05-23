@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block title %}{% for product in products %}Store | {{product.name}}{% endfor %}{% endblock title %} 
+
+{% block body %}
+<h1>pr</h1>
+<div class="container">
+    <div class="row">
+       {% for product in products  %}
+       <div class="col-lg-4 ">
+           <div class="box-element product">
+                   <img src="{{product.imageURL}}" alt="Image" class="thumbnail">
+                   <div class="box-element product">
+                       <h6><strong>{{product.name}}</strong></h6>
+                       <hr>
+                       <button class="btn btn-outline-secondary add-btn update-cart" data-product={{product.id}} data-action="add">Add to Cart</button>
+                       <a href="#" id="pr{{product.id}}"  class="btn btn-outline-warning">Buy Now</a>
+                       <h4 style="display: inline-block;" ><strong>${{product.price|floatformat:2}}</strong></h4>
+                   </div>
+                   <!-- {% url 'product/{{product.id}} -->
+           </div>
+       </div>
+   
+       {% endfor %}
+       
+    </div>
+   </div>
+
+{% endblock body %}

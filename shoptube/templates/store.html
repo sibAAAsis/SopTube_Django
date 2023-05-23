@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block style %}
+<style>
+    .row{
+        margin-right: 0;
+        margin-left: 0;
+    }
+</style>
+{% endblock style %}
+<title>{% block title %}Store | HOME{% endblock title %}</title>
+{% block body %}
+
+
+<div class=" ">
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/1.webp' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/1.webp' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/1.webp' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+</div>
+
+
+<div class="container">
+ <div class="row">
+    {% for product in products  %}
+    <div class="col-lg-4 ">
+        <div class="box-element product">
+                <img src="{{product.imageURL}}" alt="Image" class="thumbnail">
+                <div class="box-element product">
+                    <h6><strong>{{product.name}}</strong></h6>
+                    <hr>
+                    <button class="btn btn-outline-warning add-btn update-cart" data-product={{product.id}} data-action="add">Add to Cart</button>
+                    <a href="product/{{product.id}}" id="pr{{product.id}}"  class="btn btn-outline-primary">View</a>
+                    <h4 style="display: inline-block;" ><strong>${{product.price|floatformat:2}}</strong></h4>
+                </div>
+                <!-- {% url 'product/{{product.id}} -->
+        </div>
+    </div>
+
+    {% endfor %}
+    
+ </div>
+</div>
+
+<script>
+    
+    
+</script>
+{% endblock body %}
